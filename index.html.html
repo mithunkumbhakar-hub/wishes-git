@@ -1,0 +1,177 @@
+<!DOCTYPE html><html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sujji</title><style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+color:white;
+overflow:hidden;
+}
+
+/* SLIDES */
+
+.slide{
+position:absolute;
+width:100%;
+height:100vh;
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:30px;
+box-sizing:border-box;
+}
+
+.slide.active{
+display:flex;
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0; transform:scale(0.9);}
+to{opacity:1; transform:scale(1);}
+}
+
+/* BACKGROUNDS */
+
+.s1{background:linear-gradient(135deg,#ff6a88,#ff99ac);}
+.s2{background:linear-gradient(135deg,#36d1dc,#5b86e5);}
+.s3{background:linear-gradient(135deg,#ff9966,#ff5e62);}
+.s4{background:linear-gradient(135deg,#f7971e,#ffd200);}
+.s5{background:linear-gradient(135deg,#00c9ff,#92fe9d);}
+.s6{background:linear-gradient(135deg,#8e2de2,#4a00e0);}
+.s7{background:linear-gradient(135deg,#ff512f,#dd2476);}
+
+h1{font-size:34px}
+p{font-size:20px;max-width:600px}
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#333;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* FLOATING OBJECTS */
+
+.float{
+position:fixed;
+bottom:-60px;
+font-size:32px;
+animation:floatUp linear forwards;
+pointer-events:none;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0); opacity:1;}
+100%{transform:translateY(-120vh); opacity:0;}
+}
+
+</style></head><body><!-- SLIDE 1 --><div class="slide s1 active"><h1>🎉 HAPPY BIRTHDAY, SUPERSTAR 🎂</h1><p>
+Another year older.<br>
+Another year under observation 👀
+</p><button onclick="next()">Tap to continue</button>
+
+</div><!-- SLIDE 2 --><div class="slide s2"><h1>👀 Before we celebrate</h1><p>
+We need to test something.<br>
+A very important question is coming.<br>
+Be honest.<br>
+We are watching 😌
+</p><button onclick="next()">Continue</button>
+
+</div><!-- SLIDE 3 --><div class="slide s3"><h1>😏 Who is your favourite sister?</h1><p>Select at your own risk. We remember everything.</p><button onclick="show(3)">Purnima</button>
+<button onclick="show(4)">Kiran</button>
+
+</div><!-- SLIDE 4 --><div class="slide s4"><h1>📊 Accounts Mode Activated</h1><p>Future consequences may include:<br><br>
+
+• Budget control<br>
+• Expense reminders<br>
+• Emotional interest charges<br><br>
+
+Smart move. Very calculated 💰
+
+</p><button onclick="show(5)">Continue</button>
+
+</div><!-- SLIDE 5 --><div class="slide s5"><h1>🏋️ Fitness Mode Activated</h1><p>• Cake calorie tracking<br>
+• 20 push-ups before celebration<br>
+• Strict coaching supervision<br><br>
+
+Bold move. Hope you stretched first 💪
+
+</p><button onclick="show(5)">Continue</button>
+
+</div><!-- SLIDE 6 --><div class="slide s6"><h1>😈 THE TRUTH</h1><p>Relax.<br>
+There was never a correct answer.<br><br>
+
+Because you are our younger brother.<br><br>
+
+✔ We tease you<br>
+✔ We monitor you<br>
+✔ We protect you<br>
+✔ And sometimes we annoy you 😌
+
+</p><button onclick="show(6)">Final Wish</button>
+
+</div><!-- FINAL SLIDE --><div class="slide s7"><h1>🎂 FINAL BIRTHDAY WISH 🎂</h1><p>No matter what you chose…<br><br>
+
+You still owe both of us:<br><br>
+
+💝 Equal love<br>
+💝 Equal respect<br>
+💝 Equal gifts<br><br>
+
+And most importantly…<br>
+A big birthday treat.
+
+</p><h1>Happy Birthday… our Sujji 🎉</h1></div><script>
+
+/* SLIDE CONTROL */
+
+let current=0
+let slides=document.querySelectorAll(".slide")
+
+function next(){
+slides[current].classList.remove("active")
+current++
+slides[current].classList.add("active")
+}
+
+function show(n){
+slides.forEach(s=>s.classList.remove("active"))
+slides[n].classList.add("active")
+current=n
+}
+
+/* CONTINUOUS FLOATING OBJECTS */
+
+const emojis=["🎈","💖","⭐","🎆","✨"]
+
+function createFloat(){
+
+let e=document.createElement("div")
+e.className="float"
+
+e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)]
+
+e.style.left=Math.random()*100+"vw"
+
+let duration=6+Math.random()*6
+e.style.animationDuration=duration+"s"
+
+document.body.appendChild(e)
+
+setTimeout(()=>{e.remove()},duration*1000)
+
+}
+
+setInterval(createFloat,500)
+
+</script></body>
+</html>
